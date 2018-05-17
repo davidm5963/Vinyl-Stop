@@ -1,0 +1,31 @@
+﻿@model AlbumListViewModel
+@{
+    ViewData["Title"] = "Album List";
+}
+    <div>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col">
+                <h2>@Model.CurrentCategory</h2>
+            </div>
+            @if(Model.Albums.Count() > 0)
+            {
+                <div class="mdl-cell mdl-cell--1-col">
+                    @await Component.InvokeAsync("CategoryMenu")
+                </div>
+            }
+
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+
+            <h4 class="text-danger">@ViewData["NoResults"]</h4>
+
+            @foreach (Album Album in Model.Albums)
+            {
+                <div class="mdl-cell mdl-cell--3-col mdl-card mdl-shadow--2dp">
+                    @{Html.RenderPartial("AlbumSummary", Album);}
+                </div>
+            }
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,66 @@
+﻿@model AlbumListViewModel
+<div class="container">
+    <div class="row">
+        <div>
+            <div class="main-box clearfix">
+                <a style="color: white; text-decoration: none" asp-action="CreateAlbum" asp-controller="Album">
+                    <div class="col-lg-offset-11  btn btn-success">
+                        Add New Album
+                    </div>
+                </a>
+            </div>
+                <div class="table-responsive">
+                    <table id="albumTable" class="table -list sortable">
+                        <thead>
+                            <tr>
+                                <th><span>Album</span></th>
+                                <th><span>Category</span></th>
+                                <th><span>Amount Left</span></th>
+                                <th><span>Price</span></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var album in @Model.Albums)
+                        {
+                            <tr>
+                                <td class="table-data">
+                                    <h4>@album.Name</h4>
+                                    <span class="text-muted">@album.Artist</span>
+                                </td>
+                                <td class="table-data">
+                                    <span class="text-muted">@album.Category.CategoryName</span>
+                                </td>
+                                <td class="table-data">
+                                    @album.InStock
+                                </td>
+                                <td class="table-data">
+                                    @album.Price.ToString("c")
+                                </td>
+                                <td class="table-data" style="width: 20%;">
+                                    <a asp-action="EditAlbum" asp-controller="Album" asp-route-albumId="@album.AlbumId" class="table-link">
+                                        <span class="fa-stack">
+                                            <i class="material-icons">edit</i>
+                                        </span>
+                                    </a>
+                                    <a asp-action="DeleteAlbumConfirmation" asp-controller="Album" asp-route-albumId="@album.AlbumId" class="table-link danger">
+                                        <span class="fa-stack">
+                                            <i style="color: red" class="material-icons">delete_forever</i>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#albumTable').dataTable();
+});
+</script>

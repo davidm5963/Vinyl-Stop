@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Error sending message";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">
+                        <strong>Sorry!</strong> There was an error contacting us
+                    </h1>
+                    <div class="row text-center">
+                        <h4>
+                            Please try again later
+                        </h4>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        <a style="text-decoration: none" href="@Url.Action("Index", "Contact")">
+                            <input class="btn btn-success" value="Go Back">
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <a style="text-decoration: none" href="@Url.Action("Index", "Home")">
+                            <input class="btn btn-success" value="Go Home">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model MyAccountViewModel
+@inject AlbumStore.Data.Interfaces.IAlbumRepository _albumRepository
+
+<div class="container">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2><strong>@Model.FirstName @Model.LastName</strong></h2>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class=" col-md-9 col-lg-9 ">
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                            <tr>
+                                <td>Address</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td>@Model.PhoneNumber</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>My Purchases</h2>
+    
+    <div class="panel panel-default panel-order">
+
+        @foreach (var order in @Model.OrderHistory)
+        {
+            @foreach (var orderDetail in order.OrderLines)
+            {
+                decimal subtotal = orderDetail.Price * orderDetail.Amount;
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3"><img src=@orderDetail.Album.ImageUrl class="media-object thumbnail-image-xs"></div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4><span><strong>@orderDetail.Album.Name</strong></span></h4>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span style="font-weight:600">Quantity: </span> @orderDetail.Amount
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span style="font-weight:600">Price: </span> @subtotal
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span style="font-weight:600">Date Placed: </span> @order.DatePlaced.ToShortDateString()
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+        }
+       </div>
+   </div>
+</div>

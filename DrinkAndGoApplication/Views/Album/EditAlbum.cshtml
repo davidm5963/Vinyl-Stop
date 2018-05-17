@@ -1,0 +1,108 @@
+﻿@model Album
+@inject AlbumStore.Data.Interfaces.ICategoryRepository categoryRepository
+
+@{
+    ViewData["Title"] = "Edit Album";
+}
+
+<div class="container ">
+    <h3 class="text-center">Edit @Model.Name</h3>
+    <form asp-action="EditAlbum" asp-controller="Album" method="post" class="form-horizontal" role="form">
+
+        @Html.HiddenFor(x => x.AlbumId, Model.AlbumId)
+
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-3 control-label">Name</label>
+            <div class="col-md-6">
+                <input asp-for="Name" class="form-control" placeholder="@Model.Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AlbumLabel" class="col-md-3 control-label">Record Label</label>
+            <div class="col-md-6">
+                <input asp-for="AlbumLabel" class="form-control" />
+                <span asp-validation-for="AlbumLabel" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="YearReleased" class="col-md-3 control-label">Year Released</label>
+            <div class="col-md-6">
+                <input asp-for="YearReleased" class="form-control" value="@Model.YearReleased"/>
+                <span asp-validation-for="YearReleased" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CategoryId" class="col-md-3 control-label">Genre</label>
+            <div class="col-md-6">
+                <Select asp-for="CategoryId" class="form-control" id="genre">
+                    @foreach (var genre in categoryRepository.Categories)
+                    {
+                        <option value="@genre.CategoryId">@genre.CategoryName</option>
+                    }
+                </Select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Artist" class="col-md-3 control-label">Artist</label>
+            <div class="col-md-6">
+                <input asp-for="Artist" class="form-control" />
+                <span asp-validation-for="Artist" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LongDescription" class="col-md-3 control-label">Description</label>
+            <div class="col-md-6">
+                <textarea asp-for="LongDescription" class="form-control" placeholder="@Model.LongDescription"></textarea>
+                <span asp-validation-for="LongDescription" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImageUrl" class="col-md-3 control-label">Main Image URL</label>
+            <div class="col-md-6">
+                <input asp-for="ImageUrl" class="form-control" placeholder="@Model.ImageUrl" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-3 control-label">Price</label>
+            <div class="col-md-6">
+                <input asp-for="Price" class="form-control" placeholder="@Model.Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="InStock" class="col-md-3 control-label">Number Available</label>
+            <div class="col-md-6">
+                <input asp-for="InStock" type="number" min="0" step="1" class="form-control" placeholder="@Model.InStock" />
+                <span asp-validation-for="InStock" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="IsPreferredAlbum" class="col-md-3 control-label">Preferred Album?</label>
+            <div class="col-md-7">
+                <div class="checkbox">
+                    <input asp-for="IsPreferredAlbum" type="checkbox" value="true" name="IsPreferredAlbum" />
+                    <input asp-for="IsPreferredAlbum" type="hidden" value="false" name="IsPreferredAlbum" />
+                </div>
+                <span asp-validation-for="IsPreferredAlbum" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group col-md-offset-3 col-md-8">
+                <input class="btn btn-success" type="submit" value="Update Album" />
+            </div>
+        </div>
+
+    </form>
+</div>
+

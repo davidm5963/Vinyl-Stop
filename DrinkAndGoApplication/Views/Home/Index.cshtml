@@ -1,0 +1,31 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="bg-overlay">
+    <div class="row text-center">
+        <img src="~/Images/Logo_Medium.png" />
+    </div>
+</div>
+
+
+<div class="mdl-grid">
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.Partial("AdminMenu");
+    }
+    else
+    {
+
+        @foreach (var preferredAlbum in Model.PreferredAlbums)
+        {
+            <div class="mdl-cell mdl-cell--3-col mdl-card mdl-shadow--2dp">
+                @{Html.RenderPartial("AlbumSummary", preferredAlbum);}
+            </div>
+        }
+    }
+</div>
+
+
+

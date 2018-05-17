@@ -1,0 +1,46 @@
+﻿@model Album
+@{
+    ViewData["Title"] = "Album Details";
+}
+
+<div class="container">
+    <div class="page-header clearfix detailHeading">
+        <h2 class="text-muted">Album Details</h2>
+        <h3 class="text-danger">@Html.ValidationMessage("NotEnough")</h3>
+    </div>
+</div>
+
+<div  style="margin-bottom: 15px" class="container detailHeading">
+    <div class="row">
+        <div class="col-md-8">
+            <div>
+                <img class="detailImage" src="@Model.ImageUrl" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h1 id="albumName"><strong>@Model.Name</strong></h1>
+            <h4 id="albumCategory" class="text-muted">@Model.Category.CategoryName</h4>
+            <h4 id="albumPrice" class="text-muted">@Model.YearReleased</h4>
+
+            <h2 id="albumPrice">@Model.Price.ToString("c")</h2>
+
+            @if (Model.InStock < 10 && Model.InStock > 0)
+            {
+                <h5 class="text-danger">Hurry! This item is almost gone</h5>
+            }
+
+            <form asp-action="AddAlbumToCart" asp-controller="ShoppingCart" asp-route-albumId="@Model.AlbumId" method="post">
+                Quantity
+                <input name="albumAmount" style="width: 50px" type="number" min="1" value="1" step="1" />
+                    @await Component.InvokeAsync("AddToCartButton", Model.InStock)
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <p>@Model.LongDescription</p>
+</div>
+
+
