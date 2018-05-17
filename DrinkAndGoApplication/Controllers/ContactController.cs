@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
-using AlbumStore.Services;
+using VinylStop.Services;
 using Microsoft.Extensions.Options;
 
-namespace AlbumStore.Controllers
+namespace VinylStop.Controllers
 {
     public class ContactController : Controller
     {

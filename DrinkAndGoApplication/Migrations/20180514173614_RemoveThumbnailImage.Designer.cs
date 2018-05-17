@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using AlbumStore.Data;
+using VinylStop.Data;
 using System;
 
-namespace AlbumStore.Migrations
+namespace VinylStop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20180514173614_RemoveThumbnailImage")]
@@ -129,7 +129,7 @@ namespace AlbumStore.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.Category", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd();
@@ -143,7 +143,7 @@ namespace AlbumStore.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.Order", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd();
@@ -197,7 +197,7 @@ namespace AlbumStore.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.OrderDetail", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.OrderDetail", b =>
                 {
                     b.Property<int>("OrderDetailId")
                         .ValueGeneratedOnAdd();
@@ -221,7 +221,7 @@ namespace AlbumStore.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.Album", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.Album", b =>
                 {
                     b.Property<int>("AlbumId")
                         .ValueGeneratedOnAdd();
@@ -255,7 +255,7 @@ namespace AlbumStore.Migrations
                     b.ToTable("Albums");
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.ShoppingCartItem", b =>
                 {
                     b.Property<int>("ShoppingCartItemId")
                         .ValueGeneratedOnAdd();
@@ -273,7 +273,7 @@ namespace AlbumStore.Migrations
                     b.ToTable("CartItems");
                 });
 
-            modelBuilder.Entity("AlbumStore.ViewModels.ApplicationUser", b =>
+            modelBuilder.Entity("VinylStop.ViewModels.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -340,7 +340,7 @@ namespace AlbumStore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("AlbumStore.ViewModels.ApplicationUser")
+                    b.HasOne("VinylStop.ViewModels.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -348,7 +348,7 @@ namespace AlbumStore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("AlbumStore.ViewModels.ApplicationUser")
+                    b.HasOne("VinylStop.ViewModels.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -361,7 +361,7 @@ namespace AlbumStore.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AlbumStore.ViewModels.ApplicationUser")
+                    b.HasOne("VinylStop.ViewModels.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -369,36 +369,36 @@ namespace AlbumStore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("AlbumStore.ViewModels.ApplicationUser")
+                    b.HasOne("VinylStop.ViewModels.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.OrderDetail", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.OrderDetail", b =>
                 {
-                    b.HasOne("AlbumStore.Data.Models.Order", "Order")
+                    b.HasOne("VinylStop.Data.Models.Order", "Order")
                         .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AlbumStore.Data.Models.Album", "Album")
+                    b.HasOne("VinylStop.Data.Models.Album", "Album")
                         .WithMany()
                         .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.Album", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.Album", b =>
                 {
-                    b.HasOne("AlbumStore.Data.Models.Category", "Category")
+                    b.HasOne("VinylStop.Data.Models.Category", "Category")
                         .WithMany("Albums")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AlbumStore.Data.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("VinylStop.Data.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("AlbumStore.Data.Models.Album", "Album")
+                    b.HasOne("VinylStop.Data.Models.Album", "Album")
                         .WithMany()
                         .HasForeignKey("AlbumId");
                 });

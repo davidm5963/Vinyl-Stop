@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace AlbumStore.Migrations
+namespace VinylStop.Migrations
 {
     public partial class Initial : Migration
     {

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AlbumStore.Data.Interfaces;
-using AlbumStore.Data.Models;
-using AlbumStore.ViewModels;
+using VinylStop.Data.Interfaces;
+using VinylStop.Data.Models;
+using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace AlbumStore.Controllers
+namespace VinylStop.Controllers
 {
     public class ShoppingCartController : Controller
     {

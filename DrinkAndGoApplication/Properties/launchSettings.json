@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "AlbumStore": {
+    "VinylStop": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AlbumStore.ViewModels.AccountViewModels;
-using AlbumStore.ViewModels;
-using AlbumStore.Services;
-using AlbumStore.Data.Repositories;
+using VinylStop.ViewModels.AccountViewModels;
+using VinylStop.ViewModels;
+using VinylStop.Services;
+using VinylStop.Data.Repositories;
 using System.Linq;
-using AlbumStore.Data.Interfaces;
+using VinylStop.Data.Interfaces;
 
-namespace AlbumStore.Controllers
+namespace VinylStop.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]

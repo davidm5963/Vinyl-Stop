@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
-using AlbumStore.ViewModels;
+using VinylStop.ViewModels;
 using System.Threading.Tasks;
-namespace AlbumStore.Data
+namespace VinylStop.Data
 {
     public class seed
     {

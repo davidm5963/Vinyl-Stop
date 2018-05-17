@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using AlbumStore.Data.Interfaces;
+using VinylStop.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.Components
+namespace VinylStop.Components
 {
     public class AddToCartButton : Microsoft.AspNetCore.Mvc.ViewComponent
     {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using AlbumStore.ViewModels;
+using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AlbumStore.Controllers
+namespace VinylStop.Controllers
 {
     [Authorize(Roles="Admin")]
     public class ManageUsersController : Controller

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using AlbumStore.Services;
+using VinylStop.Services;
 
-namespace AlbumStore.Services
+namespace VinylStop.Services
 {
     public static class EmailSenderExtensions
     {

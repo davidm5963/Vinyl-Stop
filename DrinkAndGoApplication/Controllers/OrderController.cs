@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AlbumStore.Data.Interfaces;
-using AlbumStore.Data.Models;
-using AlbumStore.Data.Repositories;
-using AlbumStore.ViewModels;
+using VinylStop.Data.Interfaces;
+using VinylStop.Data.Models;
+using VinylStop.Data.Repositories;
+using VinylStop.ViewModels;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MimeKit;
 
-namespace AlbumStore.Controllers
+namespace VinylStop.Controllers
 {
     public class OrderController : Controller
     {

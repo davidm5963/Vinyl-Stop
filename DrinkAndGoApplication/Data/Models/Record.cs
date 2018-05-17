@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.Data.Models
+namespace VinylStop.Data.Models
 {
     public class Album
     {

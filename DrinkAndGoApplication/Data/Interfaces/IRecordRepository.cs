@@ -1,10 +1,10 @@
-﻿using AlbumStore.Data.Models;
+﻿using VinylStop.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.Data.Interfaces
+namespace VinylStop.Data.Interfaces
 {
     public interface IAlbumRepository
     {

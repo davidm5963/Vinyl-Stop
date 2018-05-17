@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AlbumStore.Data.Interfaces;
-using AlbumStore.Data.Repositories;
-using AlbumStore.ViewModels;
+using VinylStop.Data.Interfaces;
+using VinylStop.Data.Repositories;
+using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AlbumStore.Controllers
+namespace VinylStop.Controllers
 {
     public class HomeController : Controller
     {

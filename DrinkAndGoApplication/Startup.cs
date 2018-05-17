@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
-using AlbumStore.Data.Interfaces;
-using AlbumStore.Data;
+using VinylStop.Data.Interfaces;
+using VinylStop.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using AlbumStore.Data.Repositories;
-using AlbumStore.Data.Models;
+using VinylStop.Data.Repositories;
+using VinylStop.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using AlbumStore.ViewModels;
-using AlbumStore.Services;
+using VinylStop.ViewModels;
+using VinylStop.Services;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
-namespace AlbumStore
+namespace VinylStop
 {
     public class Startup
     {

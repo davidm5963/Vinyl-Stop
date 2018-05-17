@@ -1,7 +1,7 @@
-﻿using AlbumStore.Data.Models;
+﻿using VinylStop.Data.Models;
 using System.Collections.Generic;
 
-namespace AlbumStore.ViewModels
+namespace VinylStop.ViewModels
 {
     public class HomeViewModel
     {

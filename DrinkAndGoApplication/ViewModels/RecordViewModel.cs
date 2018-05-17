@@ -1,12 +1,12 @@
-﻿using AlbumStore.Data.Interfaces;
-using AlbumStore.Data.Models;
-using AlbumStore.Data.Repositories;
+﻿using VinylStop.Data.Interfaces;
+using VinylStop.Data.Models;
+using VinylStop.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.ViewModels
+namespace VinylStop.ViewModels
 {
     public class AlbumViewModel
     {

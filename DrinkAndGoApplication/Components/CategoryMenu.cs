@@ -1,12 +1,12 @@
-﻿using AlbumStore.Data.Interfaces;
-using AlbumStore.Data.Models;
+﻿using VinylStop.Data.Interfaces;
+using VinylStop.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.Components
+namespace VinylStop.Components
 {
     public class CategoryMenu : Microsoft.AspNetCore.Mvc.ViewComponent
     {

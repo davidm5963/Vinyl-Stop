@@ -1,5 +1,5 @@
-﻿using AlbumStore.Data.Models;
-using AlbumStore.ViewModels;
+﻿using VinylStop.Data.Models;
+using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Identity;
 //using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.Data
+namespace VinylStop.Data
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {

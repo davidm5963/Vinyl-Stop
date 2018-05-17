@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.ViewModels.AccountViewModels
+namespace VinylStop.ViewModels.AccountViewModels
 {
     public class ResetPasswordViewModel
     {

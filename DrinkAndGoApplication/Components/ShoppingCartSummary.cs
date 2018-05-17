@@ -1,12 +1,12 @@
-﻿using AlbumStore.Data.Models;
-using AlbumStore.ViewModels;
+﻿using VinylStop.Data.Models;
+using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.Components
+namespace VinylStop.Components
 {
     public class ShoppingCartSummary:ViewComponent
     {

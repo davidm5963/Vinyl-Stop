@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AlbumStore.ViewModels
+namespace VinylStop.ViewModels
 {
     public class UserListViewModel
     {

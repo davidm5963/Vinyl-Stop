@@ -1,6 +1,6 @@
-﻿using AlbumStore.Data.Interfaces;
-using AlbumStore.Data.Models;
-using AlbumStore.ViewModels;
+﻿using VinylStop.Data.Interfaces;
+using VinylStop.Data.Models;
+using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AlbumStore.Data.Repositories
+namespace VinylStop.Data.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
