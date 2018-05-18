@@ -19,6 +19,5 @@ namespace VinylStop.Data.Interfaces
         void CreateAlbum(Album album);
         void EditAlbum(Album album);
 
-        void AddCategories();
     }
 }

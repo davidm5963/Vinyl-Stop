@@ -7,6 +7,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using VinylStop.Services;
 using Microsoft.Extensions.Options;
+using VinylStop.ViewModels;
 
 namespace VinylStop.Controllers
 {
@@ -19,49 +20,57 @@ namespace VinylStop.Controllers
             _emailConfiguration = emailConfiguration.Value;
         }
 
-        public ViewResult Index()
+        public ViewResult SendMessage()
         {
             return View();
         }
 
-        public ActionResult SendMessage(string name, string email, string msg, string subject)
+        [HttpPost]
+        public ActionResult SendMessage(ContactViewModel contactViewModel)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("davidmoeller115963@gmail.com"));
             message.To.Add(new MailboxAddress("davidmoeller115963@gmail.com"));
 
-            message.Subject = subject;
-            message.Body = new TextPart("html")
+            if (!ModelState.IsValid)
             {
-                Text = "From: " + name + "<br>" +
-                        "Contact Information: " + email + "<br>" +
-                        "Message: " + msg
-            };
-
-            try
+                return View(contactViewModel);
+            }
+            else
             {
-                using (var client = new SmtpClient())
+                message.Subject = contactViewModel.Subject;
+                message.Body = new TextPart("html")
                 {
-                    client.Connect("smtp.gmail.com", 587);
+                    Text = "From: " + contactViewModel.Name + "<br>" +
+                            "Contact Information: " + contactViewModel.UserEmail + "<br>" +
+                            "Message: " + contactViewModel.Message
+                };
+
+                try
+                {
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587);
 
 
-                    // Note: since we don't have an OAuth2 token, disable
-                    // the XOAUTH2 authentication mechanism.
-                    client.AuthenticationMechanisms.Remove("XOAUTH2");
+                        // Note: since we don't have an OAuth2 token, disable
+                        // the XOAUTH2 authentication mechanism.
+                        client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                    // Note: only needed if the SMTP server requires authentication
-                    client.Authenticate("davidmoeller115963@gmail.com", "Ryajus1010");
+                        // Note: only needed if the SMTP server requires authentication
+                        client.Authenticate("davidmoeller115963@gmail.com", "Ryajus1010");
 
-                    client.Send(message);
-                    client.Disconnect(true);
+                        client.Send(message);
+                        client.Disconnect(true);
+                    }
                 }
-            }
-            catch(Exception)
-            {
-                return RedirectToAction("ContactError");
-            }
+                catch (Exception)
+                {
+                    return RedirectToAction("ContactError");
+                }
 
-            return RedirectToAction("ContactSuccess");
+                return RedirectToAction("ContactSuccess");
+            }
         }
 
         public ViewResult ContactError() =>  View();

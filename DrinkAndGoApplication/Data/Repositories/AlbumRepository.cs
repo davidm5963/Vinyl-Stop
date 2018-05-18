@@ -21,7 +21,7 @@ namespace VinylStop.Data.Repositories
         public IEnumerable<Album> Albums => _appDbContext.Albums.Include(c => c.Category).OrderBy(c => c.Name);
         public IEnumerable<Album> PreferredAlbums => _appDbContext.Albums.Where(p => p.IsPreferredAlbum).Include(p => p.Category);
 
-        public Album GetAlbumById(int albumId) => _appDbContext.Albums.Include(c => c.Category).FirstOrDefault(p => p.AlbumId == albumId);
+        public Album GetAlbumById(int albumId) => _appDbContext.Albums.Include(p => p.Category).FirstOrDefault(p => p.AlbumId == albumId);
 
         public void DeleteAlbum(int albumId)
         {
@@ -56,7 +56,7 @@ namespace VinylStop.Data.Repositories
             var oldAlbum = GetAlbumById(newAlbum.AlbumId);
 
             oldAlbum.Name = newAlbum.Name;
-            oldAlbum.Category = newAlbum.Category;
+            oldAlbum.Category = _categoryRepository.GetCategoryById(newAlbum.CategoryId);
             oldAlbum.CategoryId = newAlbum.CategoryId;
             oldAlbum.Artist = newAlbum.Artist;
             oldAlbum.LongDescription = newAlbum.LongDescription;
@@ -66,18 +66,6 @@ namespace VinylStop.Data.Repositories
             oldAlbum.InStock = newAlbum.InStock;
 
             _appDbContext.SaveChanges();
-        }
-
-        public void AddCategories()
-        {
-            foreach(var album in Albums)
-            {
-                if(album.Category == null)
-                {
-                    album.Category = _categoryRepository.GetCategoryById(album.CategoryId);
-                    _appDbContext.SaveChanges();
-                }
-            }
         }
     }
 }

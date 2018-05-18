@@ -60,7 +60,7 @@
 
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
                         <a class="mdl-navigation__link" asp-controller="Home" asp-action="Index">Home</a>
-                        <a class="mdl-navigation__link" asp-controller="Contact" asp-action="Index">Contact Us</a>
+                        <a class="mdl-navigation__link" asp-controller="Contact" asp-action="SendMessage">Contact Us</a>
                         <a class="mdl-navigation__link" asp-controller="Album" asp-action="List">Albums</a>
                     </nav>
                     <!-- Add spacer, to align items to the right -->
@@ -91,7 +91,7 @@
 
                 <nav class="mdl-navigation">
                     <a class="mdl-navigation__link" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="mdl-navigation__link" asp-controller="Contact" asp-action="Index">Contact Us</a>
+                    <a class="mdl-navigation__link" asp-controller="Contact" asp-action="SendMessage">Contact Us</a>
                     <a class="mdl-navigation__link" asp-controller="Album" asp-action="List">Albums</a>
                     @Html.Partial("LoginPartial")
                     @await Component.InvokeAsync("ShoppingCartSummary")

@@ -95,7 +95,6 @@ namespace VinylStop.Controllers
         [Authorize(Roles = "Admin")]
         public ViewResult AdminList()
         {
-            _albumRepository.AddCategories();
             AlbumListViewModel albumListViewModel = new AlbumListViewModel
             {
                 Albums = _albumRepository.Albums,

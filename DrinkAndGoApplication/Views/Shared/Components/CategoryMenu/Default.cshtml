@@ -1,16 +1,15 @@
-﻿
- <div class="mdl-textfield mdl-js-textfield getmdl-select">
-        <input type="text" value="" class="mdl-textfield__input" id="sample2" readonly>
-        <input type="hidden" value="" name="sample2">
-        <label for="sample2" class="mdl-textfield__label">Genre</label>
-        <ul for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-            @foreach (var category in Model)
-            {
-                <a asp-controller="Album" asp-action="List" asp-route-categoryId=@category.CategoryId>
-                    <li class="mdl-menu__item">
-                        @category.CategoryName
-                    </li>
-                </a>
-            }
-        </ul>
-    </div>
+﻿<div class="mdl-textfield mdl-js-textfield getmdl-select">
+                <input type="text" value="" class="mdl-textfield__input" id="sample2" readonly>
+                <input type="hidden" value="" name="sample2">
+                <label for="sample2" class="mdl-textfield__label">Genre</label>
+                <ul for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    @foreach (var category in Model)
+                    {
+                        <a asp-controller="Album" asp-action="List" asp-route-categoryId=@category.CategoryId>
+                            <li class="mdl-menu__item">
+                                @category.CategoryName
+                            </li>
+                        </a>
+                    }
+                </ul>
+            </div>
