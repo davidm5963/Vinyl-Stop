@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using VinylStop.ViewModels;
 using System.Threading.Tasks;
+using VinylStop.Data.Models;
+
 namespace VinylStop.Data
 {
     public class seed

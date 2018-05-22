@@ -7,6 +7,7 @@ using VinylStop.Data.Repositories;
 using VinylStop.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using VinylStop.Data.Models;
 
 namespace VinylStop.Controllers
 {

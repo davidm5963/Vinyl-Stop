@@ -12,6 +12,7 @@ using VinylStop.Services;
 using VinylStop.Data.Repositories;
 using System.Linq;
 using VinylStop.Data.Interfaces;
+using VinylStop.Data.Models;
 
 namespace VinylStop.Controllers
 {
@@ -21,6 +22,7 @@ namespace VinylStop.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ShoppingCart _shoppingCart;
         private readonly IOrderRepository _orderRepository;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;

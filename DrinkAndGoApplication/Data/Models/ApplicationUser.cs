@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VinylStop.ViewModels
+namespace VinylStop.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
@@ -17,5 +17,6 @@ namespace VinylStop.ViewModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        public string CartId { get; set; }
     }
 }

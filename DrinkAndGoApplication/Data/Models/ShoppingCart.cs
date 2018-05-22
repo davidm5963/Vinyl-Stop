@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -11,29 +12,50 @@ namespace VinylStop.Data.Models
     public class ShoppingCart
     {
 
-        private readonly AppDbContext DbContext;
+        private readonly AppDbContext _dbContext;
 
         public ShoppingCart(AppDbContext dbContext)
         {
-            this.DbContext = dbContext;
+           _dbContext = dbContext;
         }
 
         public string ShoppingCartId { get; set; }
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        public static ShoppingCart GetCart(IServiceProvider services)
+        public static async Task<ShoppingCart> GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-
+            var contextAccessor = services.GetRequiredService<IHttpContextAccessor>();
+            var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
             var context = services.GetRequiredService<AppDbContext>();
-            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-            session.SetString("CartId", cartId);
-            return new ShoppingCart(context) { ShoppingCartId = cartId };
+
+            var user = await userManager.GetUserAsync(contextAccessor.HttpContext.User);
+            if(user != null)
+            {
+                if(user.CartId == null)
+                {
+                    string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+                    session.SetString("CartId", cartId);
+                    user.CartId = cartId;
+                    return new ShoppingCart(context) { ShoppingCartId = cartId };
+                }
+                else
+                {
+                    return new ShoppingCart(context) { ShoppingCartId = user.CartId };
+                }
+            }
+            else
+            {
+                string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+                session.SetString("CartId", cartId);
+                return new ShoppingCart(context) { ShoppingCartId = cartId };
+            }
+
         }
 
         public void AddToCart(Album album, int amount)
         {
-            var shoppingCartItem = DbContext.CartItems.SingleOrDefault(s =>
+            var shoppingCartItem =_dbContext.CartItems.SingleOrDefault(s =>
             s.Album.AlbumId == album.AlbumId && s.ShoppingCartId == ShoppingCartId);
 
             if(shoppingCartItem == null)
@@ -45,19 +67,19 @@ namespace VinylStop.Data.Models
                         Amount = amount
                     };
 
-                DbContext.CartItems.Add(shoppingCartItem);
+               _dbContext.CartItems.Add(shoppingCartItem);
             }      
 
             else
             {
                 shoppingCartItem.Amount += amount;
             }
-            DbContext.SaveChanges();
+           _dbContext.SaveChanges();
         }
 
         public bool EnoughInStock(Album album, int amount)
         {
-            var shoppingCartItem = DbContext.CartItems.SingleOrDefault(s =>
+            var shoppingCartItem =_dbContext.CartItems.SingleOrDefault(s =>
             s.Album.AlbumId == album.AlbumId && s.ShoppingCartId == ShoppingCartId);
 
             if (shoppingCartItem == null)
@@ -72,7 +94,7 @@ namespace VinylStop.Data.Models
 
         public int RemoveFromCart(Album album)
         {
-            var shoppingCartItem = DbContext.CartItems.SingleOrDefault(s =>
+            var shoppingCartItem =_dbContext.CartItems.SingleOrDefault(s =>
             s.Album.AlbumId == album.AlbumId && s.ShoppingCartId == ShoppingCartId);
 
             var localAmount = 0;
@@ -86,11 +108,11 @@ namespace VinylStop.Data.Models
                 }
                 else
                 {
-                    DbContext.CartItems.Remove(shoppingCartItem);
+                   _dbContext.CartItems.Remove(shoppingCartItem);
                 }
             }
 
-            DbContext.SaveChanges();
+           _dbContext.SaveChanges();
 
             return localAmount;
         }
@@ -98,22 +120,22 @@ namespace VinylStop.Data.Models
         public List<ShoppingCartItem> GetAllShoppingCartItems()
         {
             return ShoppingCartItems ??
-                   (ShoppingCartItems = DbContext.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
+                   (ShoppingCartItems =_dbContext.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                    .Include(s => s.Album)
                    .ToList());
         }
 
         public void ClearCart()
         {
-            var items = DbContext.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId);
+            var items =_dbContext.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId);
 
-            DbContext.CartItems.RemoveRange(items);
-            DbContext.SaveChanges();
+           _dbContext.CartItems.RemoveRange(items);
+           _dbContext.SaveChanges();
         }
 
         public decimal GetCartTotal()
         {
-            return DbContext.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
+            return _dbContext.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                                                   .Select(c => c.Album.Price * c.Amount).Sum();
         }
     }

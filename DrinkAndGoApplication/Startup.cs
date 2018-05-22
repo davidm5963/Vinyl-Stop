@@ -34,7 +34,7 @@ namespace VinylStop
             Configuration = builder.Build();
         }
 
-        
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -61,8 +61,9 @@ namespace VinylStop
             services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<UserManager<ApplicationUser>>();
             services.Configure<EmailConfiguration>(options => Configuration.GetSection("EmailConfiguration").Bind(options));
-            services.AddScoped(sp => ShoppingCart.GetCart(sp));
+            services.AddScoped(sp => ShoppingCart.GetCart(sp).Result);
 
             services.AddSession();
             services.AddMemoryCache();
@@ -71,7 +72,7 @@ namespace VinylStop
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, UserManager<ApplicationUser> userManager)
         {
             app.UseSession();
             app.UseDeveloperExceptionPage();
@@ -79,12 +80,12 @@ namespace VinylStop
             app.UseStatusCodePages();
             app.UseAuthentication();
             app.UseMvc
-                (routes => 
-                    {
-                        routes.MapRoute(name: "CategoryFilter", template: "Album/{action}/{category?}", defaults: new { Controller = "Album", action = "List" });
-                        routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{Id?}");
-                        routes.MapRoute(name: "AlbumList", template: "{controller=Album}/{action=List}");
-                    }
+                (routes =>
+                {
+                    routes.MapRoute(name: "CategoryFilter", template: "Album/{action}/{category?}", defaults: new { Controller = "Album", action = "List" });
+                    routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{Id?}");
+                    routes.MapRoute(name: "AlbumList", template: "{controller=Album}/{action=List}");
+                }
                 );
 
             if (env.IsDevelopment())
