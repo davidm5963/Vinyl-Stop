@@ -19,6 +19,6 @@ namespace VinylStop.Data.Repositories
 
         public IEnumerable<Category> Categories => _appDbContext.Categories;
 
-        public Category GetCategoryById(int id) => _appDbContext.Categories.FirstOrDefault(c => c.CategoryId == id);
+        public Category GetCategoryById(int id) => Categories.FirstOrDefault(c => c.CategoryId == id);
     }
 }

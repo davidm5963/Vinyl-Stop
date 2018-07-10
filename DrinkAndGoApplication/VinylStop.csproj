@@ -17,28 +17,22 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Account\AccessDenied.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Account\ConfirmEmail.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Account\ExternalLogin.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Account\ForgotPassword.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Account\Lockout.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Account\LoginWith2fa.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Account\LoginWithRecoveryCode.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="bootstrap" Version="4.1.0" />
+    <PackageReference Include="bootstrap" Version="4.1.1" />
     <PackageReference Include="mailkit" Version="2.0.3" />
     <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
     <PackageReference Include="NUnit" Version="3.10.1" />
   </ItemGroup>
   
@@ -52,12 +46,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Update="Views\Account\Register.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Account\ResetPassword.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Account\ResetPasswordConfirmation.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Update="Views\Account\SignedOut.cshtml">

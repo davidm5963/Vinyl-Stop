@@ -24,8 +24,8 @@ namespace VinylStop
                     var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
                     var serviceProvider = services.GetRequiredService<IServiceProvider>();
                     var configuration = services.GetRequiredService<IConfiguration>();
-                    seed.CreateRoles(serviceProvider, configuration).Wait();
-                    DbInitializer.Seed(dbContext);
+                    DbInitializer.CreateRoles(serviceProvider, configuration).Wait();
+                    DbInitializer.SeedData(dbContext);
 
                 }
                 catch (Exception exception)

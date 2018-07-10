@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace VinylStop.Controllers
 {
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         private readonly IAlbumRepository _albumRepository;
@@ -26,6 +27,14 @@ namespace VinylStop.Controllers
         {
             var items = ShoppingCart.GetAllShoppingCartItems();
             ShoppingCart.ShoppingCartItems = items;
+
+            foreach(var item in items)
+            {
+                if(!ShoppingCart.IsShoppingCartStockValid(item.Album, item.Amount))
+                {
+                    ModelState.AddModelError(item.Album.AlbumId.ToString(), String.Format("Sorry! There are currently only {0} of this item in stock", item.Album.InStock));
+                }
+            }
 
             if(ShoppingCart.ShoppingCartItems.Count == 0)
             {

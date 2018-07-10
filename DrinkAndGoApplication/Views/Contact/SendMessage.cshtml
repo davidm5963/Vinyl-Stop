@@ -11,7 +11,7 @@
         <div class="form-group" id="form">
             <label class="control-label col-sm-2">Name</label>
             <div class="col-sm-6">
-                <input asp-for="Name" type="text" class="form-control"autocomplete="off" placeholder="Your first and last name" required>
+                <input asp-for="Name" type="text" class="form-control" autocomplete="Name" placeholder="Your first and last name" required>
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Email</label>
             <div class="col-sm-6">
-                <input asp-for="UserEmail" type="email" class="form-control" autocomplete="off" placeholder="Enter your email" required>
+                <input asp-for="UserEmail" type="email" class="form-control" autocomplete="Email" placeholder="Enter your email" required>
                 <span class="text-danger" asp-validation-for="UserEmail"></span>
             </div>
         </div>

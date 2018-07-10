@@ -31,7 +31,14 @@ namespace VinylStop.Controllers
             if(categoryId != 0)
             {
                 albums = _albumRepository.Albums.OrderBy(n => n.Name).Where(n => n.Category.CategoryId == categoryId).ToList();
-                currentCategory = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryId == categoryId).CategoryName;
+                try
+                {
+                    currentCategory = _categoryRepository.GetCategoryById(categoryId).CategoryName;
+                }
+                catch
+                {
+                    ViewData["NoResults"] = "Sorry! There are currently no albums in that category";
+                }
 
                 if (albums.Count() <= 0)
                 {
@@ -150,9 +157,16 @@ namespace VinylStop.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult AlbumDeleted(int albumId)
+        public ActionResult DeleteAlbumConfirmed(int albumId)
         {
-            _albumRepository.DeleteAlbum(albumId);
+            try
+            {
+                _albumRepository.DeleteAlbum(albumId);
+            }
+            catch
+            {
+
+            }
             return RedirectToAction("AdminList");
         }
 

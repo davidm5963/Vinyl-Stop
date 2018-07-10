@@ -18,6 +18,7 @@ namespace VinylStop.Data.Repositories
             _appDbContext = dbContext;
             _categoryRepository = categoryRepository;
         }
+
         public IEnumerable<Album> Albums => _appDbContext.Albums.Include(c => c.Category).OrderBy(c => c.Name);
         public IEnumerable<Album> PreferredAlbums => _appDbContext.Albums.Where(p => p.IsPreferredAlbum).Include(p => p.Category);
 
@@ -26,6 +27,7 @@ namespace VinylStop.Data.Repositories
         public void DeleteAlbum(int albumId)
         {
             Album albumToBeDeleted = GetAlbumById(albumId);
+            _appDbContext.CartItems.RemoveRange(_appDbContext.CartItems.Where(a => a.Album.AlbumId == albumId));
             _appDbContext.Albums.Remove(albumToBeDeleted);
             _appDbContext.SaveChanges();
         }

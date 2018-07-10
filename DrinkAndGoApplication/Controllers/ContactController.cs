@@ -29,8 +29,8 @@ namespace VinylStop.Controllers
         public ActionResult SendMessage(ContactViewModel contactViewModel)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("davidmoeller115963@gmail.com"));
-            message.To.Add(new MailboxAddress("davidmoeller115963@gmail.com"));
+            message.From.Add(new MailboxAddress(_emailConfiguration.SmtpUsername));
+            message.To.Add(new MailboxAddress(_emailConfiguration.SmtpUsername));
 
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace VinylStop.Controllers
                 {
                     using (var client = new SmtpClient())
                     {
-                        client.Connect("smtp.gmail.com", 587);
+                        client.Connect(_emailConfiguration.SmtpServer, _emailConfiguration.SmtpPort);
 
 
                         // Note: since we don't have an OAuth2 token, disable
@@ -58,10 +58,12 @@ namespace VinylStop.Controllers
                         client.AuthenticationMechanisms.Remove("XOAUTH2");
 
                         // Note: only needed if the SMTP server requires authentication
-                        client.Authenticate("davidmoeller115963@gmail.com", "Ryajus1010");
+                        client.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
 
                         client.Send(message);
                         client.Disconnect(true);
+
+                        return RedirectToAction("ContactSuccess");
                     }
                 }
                 catch (Exception)
@@ -69,7 +71,6 @@ namespace VinylStop.Controllers
                     return RedirectToAction("ContactError");
                 }
 
-                return RedirectToAction("ContactSuccess");
             }
         }
 

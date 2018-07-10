@@ -37,7 +37,7 @@ namespace VinylStop.Data.Models
         public bool IsPreferredAlbum { get; set; }
 
         [Required]
-        [Range(0, 5000)]
+        [Range(0, 10000)]
         public int InStock { get; set; }
         [Required]
         public int CategoryId { get; set; }

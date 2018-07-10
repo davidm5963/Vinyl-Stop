@@ -21,7 +21,10 @@
             @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
             {
             <tr>
-                <td class="text-left">@line.Album.Name</td>
+                <td class="text-left">
+                    <h5 style="margin: 5px">@line.Album.Name</h5>
+                    <span class="text-danger">  @Html.ValidationMessage(line.Album.AlbumId.ToString())</span>
+                </td>
                 <td class="text-center">@line.Amount</td>
                 <td class="text-right">@line.Album.Price.ToString("c")</td>
                 <td class="text-right">

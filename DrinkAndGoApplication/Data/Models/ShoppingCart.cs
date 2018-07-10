@@ -88,9 +88,15 @@ namespace VinylStop.Data.Models
             }
             else
             {
-                return (shoppingCartItem.Amount + amount > shoppingCartItem.Album.InStock ? true : false);
+                return (shoppingCartItem.Amount + amount > shoppingCartItem.Album.InStock ? false : true);
             }
         }
+
+        public bool IsShoppingCartStockValid(Album album, int amount)
+        {
+            return (amount > album.InStock ? false : true);
+        }
+
 
         public int RemoveFromCart(Album album)
         {
