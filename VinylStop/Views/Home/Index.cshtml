@@ -9,7 +9,10 @@
     </div>
 </div>
 
-
+@if(!User.IsInRole("Admin"))
+{
+   <h2>Recommended Albums</h2>
+}
 <div class="mdl-grid">
     @if (User.IsInRole("Admin"))
     {
