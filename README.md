@@ -25,6 +25,21 @@ cd Fire-Chat
 * EntityFramework Core
 * Material Design Lite
 
+## Software Requirements To Run Locally
+
+* Visual Studio 2017 Community (or higher) for Windows. Any editor on Mac.
+* ASP.NET Core SDK 2.0 or higher - http://dot.net 
+
+### Running the Application Locally on Windows
+
+1. Open the .sln file in Visual Studio
+
+2. Modify the connection string in _appsettings.json_ to reflect your environment
+
+1. Start the application (F5)
+
+1. Browse to http://localhost:59834
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
