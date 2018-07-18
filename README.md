@@ -13,8 +13,8 @@ Simple eCommerce web app for a fictional vinyl record store
 Either clone this repository or fork it on GitHub and clone your fork:
 
 ```
-https://github.com/davidm5963/Fire-Chat.git
-cd Fire-Chat
+https://github.com/davidm5963/Vinyl-Stop.git
+cd Vinyl-Stop
 ```
 
 
