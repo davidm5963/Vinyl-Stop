@@ -2,33 +2,17 @@
 @inject VinylStop.Data.Interfaces.IAlbumRepository _albumRepository
 
 <div class="container">
-    <div class="col-lg-10 col-lg-offset-1">
-        <div class="panel panel-info">
-        <div class="panel-heading">
-            <h2><strong>@Model.FirstName @Model.LastName</strong></h2>
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100% !important">
+        <div class="mdl-card__title" style="font-weight: bold">
+            <h2 class="mdl-card__title-text">@Model.FirstName @Model.LastName</h2>
         </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class=" col-md-9 col-lg-9 ">
-                    <table class="table table-user-information">
-                        <tbody>
-                            <tr>
-                            <tr>
-                                <td>Address</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>@Model.Email</td>
-                            </tr>
-                            <tr>
-                                <td>Phone Number</td>
-                                <td>@Model.PhoneNumber</td>
-                            </tr>
-                    </table>
-                </div>
-            </div>
+        <div class="mdl-card__supporting-text mdl-card--border">
+            @Model.Email
         </div>
+        <div class="mdl-card__supporting-text">
+            @Model.PhoneNumber
+        </div>
+
     </div>
 
     <h2>My Purchases</h2>
