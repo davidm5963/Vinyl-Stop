@@ -8,6 +8,15 @@ Simple eCommerce web app for a fictional vinyl record store
 
 ![Vinyl Stop Checkout](https://lh3.googleusercontent.com/91qJnoNGG83ZZmIQyqBVWlEi9iYlK_lPqKFsX5cORpWwMuBv3Z4s0FVB-NgXFxKUBmiDL9jlK0ZOg-YAHE8iSj0rgnoVN3m7N7MRgLJBTCR9bBncRAIO0sFmkeP53gSoqs5LohhNdLuj7OsB2DNAS_lO5A9pgfVBVHOEq8Mnyr4RMzDwEoa2PGultcAMV94qzH5Y9jzLC8o4x5OBHBisbEdXxhO-JX7nQ77X4c-Sw6bAP6X8VFqHO1kUSBfolzcpQhiC_V6je3Zce8QnBq6zT1LZAzIr_JE1IT87G5ycADMzLE8_86wSgP1lNbcWc0tv-UVygBDlq3xvTnzX6Ce8IZe0gGaSrnNJ9gNr-cxAOhSkmRUaBIJZGasiK7wzLX9utZmrRLbF4GX5VarfQkRc3ikxshoWr6_ksd_tTDDXZr16Md-2Yb79CeE3xjfdXiHiRURQQ_HKG2j9hfnYvlXs7d8bBL-RdgkqokjAqA2YD94cCfrrMDzQI2e21ruABkdSsn9B9mCoKgLebYJibtraBvX7Q8jT3ZqtYNRchJXRKaru3Xx1D4J_UYj3aHgz8Qnqc6phpI7TRC-b4dBksEaAhdIHzqzLMloPzI4ePA=w1226-h635-no)
 
+### Get the Code
+
+Either clone this repository or fork it on GitHub and clone your fork:
+
+```
+https://github.com/davidm5963/Fire-Chat.git
+cd Fire-Chat
+```
+
 
 ## Built With
 
