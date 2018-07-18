@@ -35,6 +35,9 @@ namespace VinylStop.Data.Repositories
             return orderLines;
         }
 
+        public IEnumerable<Order> GetAllOrders() => _appDbContext.Orders;
+        public decimal GetTotalSales() => _appDbContext.Orders.Select(o => o.OrderTotal).Sum();
+
         public void CreateOrder(Order order, string userId)
         {
             order.UserId = userId;

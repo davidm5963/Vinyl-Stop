@@ -1,0 +1,33 @@
+﻿@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<canvas id="salesChart" width="600" height="400"></canvas>
+ 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript">
+    var pieData = [
+        {
+            value: 20,
+            color: "#878BB6"
+        },
+        {
+            value: 40,
+            color: "#4ACAB4"
+        },
+        {
+            value: 10,
+            color: "#FF8153"
+        },
+        {
+            value: 30,
+            color: "#FFEA88"
+        }
+    ];
+    // Get the context of the canvas element we want to select
+    var countries = document.getElementById("countries").getContext("2d");
+    new Chart(countries).Pie(pieData);
+</script>
+    

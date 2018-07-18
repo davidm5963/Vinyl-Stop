@@ -14,6 +14,10 @@ namespace VinylStop.Data.Interfaces
 
         IEnumerable<OrderDetail> GetOrderLines(IEnumerable<Order> orders);
 
+        IEnumerable<Order> GetAllOrders();
+
+        Decimal GetTotalSales();
+
         void UpdateStock();
     }
 }
